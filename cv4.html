@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tran Thi Truc Xinh - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-pink: #f364a2;
+            --bg-dark: #12072b;
+            --text-main: #f0f0f0;
+            --border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-dark);
+            /* Tạo nền lưới và các đốm sáng màu tím giống ảnh mẫu */
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 102, 163, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.3) 0%, transparent 60%),
+                linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        /* Khung A4 của CV */
+        .cv-container {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .header-left .name {
+            font-family: 'Cinzel', serif;
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .header-left .role {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--neon-pink);
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 12px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .header-right a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .header-right a:hover {
+            color: var(--neon-pink);
+        }
+
+        .separator {
+            border: none;
+            border-top: 1.5px dashed var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        /* --- GRID LAYOUT --- */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+            margin-top: 10px;
+        }
+
+        /* --- CARD STYLE (Dashed boxes) --- */
+        .card {
+            border: 1.5px dashed var(--border-color);
+            border-radius: 12px;
+            background: rgba(20, 5, 40, 0.4);
+            backdrop-filter: blur(4px);
+            padding: 30px 25px 25px 25px;
+            position: relative;
+            margin-top: 15px; /* Chừa chỗ cho label nổi lên */
+        }
+
+        .card.no-padding {
+            padding: 0;
+            border: 1.5px dashed var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(20, 5, 40, 0.4);
+        }
+
+        /* --- Nổi nhãn (Pink Labels) --- */
+        .label {
+            position: absolute;
+            top: -14px;
+            left: 20px;
+            background-color: var(--neon-pink);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 0 12px rgba(243, 100, 162, 0.6);
+        }
+
+        /* --- TYPOGRAPHY BÊN TRONG CARD --- */
+        .card p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .list-item .star {
+            color: #ffdd57; /* Ngôi sao vàng giống mẫu */
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        /* --- SOCIAL MEDIA & QR --- */
+        .social-qr-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 55px; /* Tăng khoảng cách để không đè lên chữ */
+            position: relative;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+        }
+
+        .social-icons i {
+            font-size: 20px;
+            color: var(--text-main);
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid var(--neon-pink);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-icons i:hover {
+            background: var(--neon-pink);
+            color: #fff;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .qr-code {
+            width: 80px;
+            height: 80px;
+            background: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .arrow {
+            color: #4da6ff;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        /* --- AVATAR --- */
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Đã xóa mix-blend-mode và opacity để giữ nguyên màu gốc của ảnh */
+        }
+
+        /* --- TOOLS / TECH STACK --- */
+        .tools-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tool-badge {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--neon-pink);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .project-item {
+            margin-bottom: 15px;
+        }
+        
+        a.project-title {
+            display: inline-block;
+            font-weight: 700;
+            color: var(--neon-pink);
+            font-size: 15px;
+            margin-bottom: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a.project-title:hover {
+            color: #fff;
+            text-shadow: 0 0 8px var(--neon-pink);
+            transform: translateX(3px);
+        }
+
+        .project-desc ul {
+            padding-left: 15px;
+            font-size: 13px;
+            color: #ccc;
+            list-style-type: square;
+        }
+        .project-desc li {
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        /* --- CSS CHO IN ẤN PDF --- */
+        @media print {
+            body {
+                /* Ép trình duyệt in nền tối */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #12072b !important;
+                background-image: 
+                    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px) !important;
+            }
+            .cv-container { max-width: 100%; }
+            .card { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-left">
+            <div class="name">TRAN THI TRUC XINH</div>
+            <div class="role">Data Analyst & ML Intern</div>
+        </div>
+        <div class="header-right">
+            <div>Email: <a href="mailto:tranthitrucxinh23052005@gmail.com">tranthitrucxinh23052005@gmail.com</a></div>
+            <div>GitHub: <a href="https://github.com/tranthitrucxinh23052005-debug" target="_blank">tranthitrucxinh23052005-debug</a></div>
+            <div>LinkedIn: <a href="https://www.linkedin.com/in/tranthitrucxinh/" target="_blank">in/tranthitrucxinh</a></div>
+            <div>Facebook: <a href="https://www.facebook.com/truc.xinh.10591" target="_blank">truc.xinh.10591</a></div>
+            <div>Instagram: <a href="https://www.instagram.com/_tieuthetunhacongdang23_/" target="_blank">@_tieuthetunhacongdang23_</a></div>
+        </div>
+    </header>
+    
+    <hr class="separator">
+
+    <!-- MAIN GRID -->
+    <div class="grid-layout">
+        
+        <!-- CỘT TRÁI - ROW 1 -->
+        <div class="card">
+            <div class="label">About Me</div>
+            <p>
+                Hi! I am a 3rd-year Data Science student specializing in time series forecasting, machine learning, and data pipelines. 
+                I'm passionate about transforming raw data into actionable insights and blending logical analysis with unique visual storytelling.
+            </p>
+            
+            <div class="social-qr-container">
+                <div class="label" style="top: -35px; left: 0;">Social Media</div>
+                <div class="social-icons">
+                    <a href="https://github.com/tranthitrucxinh23052005-debug" target="_blank">
+                        <i class="fab fa-github" style="color: #fff; border-color: #4da6ff;"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/tranthitrucxinh/" target="_blank">
+                        <i class="fab fa-linkedin-in" style="color: #fff; border-color: #0077b5;"></i>
+                    </a>
+                    <a href="https://www.facebook.com/truc.xinh.10591" target="_blank">
+                        <i class="fab fa-facebook-f" style="color: #fff; border-color: #3b5998;"></i>
+                    </a>
+                    <a href="https://www.instagram.com/_tieuthetunhacongdang23_/" target="_blank">
+                        <i class="fab fa-instagram" style="color: #fff; border-color: #e1306c;"></i>
+                    </a>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <span class="arrow">➡</span>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.linkedin.com/in/tranthitrucxinh/" alt="QR" class="qr-code">
+                </div>
+            </div>
+        </div>
+
+        <!-- CỘT PHẢI - ROW 1 (AVATAR) -->
+        <div class="card no-padding" style="min-height: 250px;">
+            <img src="avatar.jpg" alt="Avatar" class="avatar-img" onerror="this.src='https://i.pinimg.com/736x/8f/a0/ea/8fa0ea2b9045b1dfbb0d8fbb52c21dc5.jpg'">
+        </div>
+
+        <!-- CỘT TRÁI - ROW 2 -->
+        <div class="card">
+            <div class="label">Education & Info</div>
+            <div class="list-item">
+                <span class="star">✦</span>
+                <span>
+                    <strong>Bachelor of Data Science in Business</strong><br>
+                    <small style="color: #aaa;">Banking University HCMC (HUB) - 3rd Year</small><br>
+                    <small style="color: #fff;"><strong>GPA:</strong> <span style="color: var(--neon-pink); font-size: 13px;">3.6+</span> | <strong>Award:</strong> University's "Student of 5 Merits"</small>
+                </span>
+            </div>
+            <div class="list-item">
+                <span class="star">✦</span>
+                <span><strong>Languages & Certs:</strong> English (TOEIC 600+), MOS, Chinese (Basic)</span>
+            </div>
+            <div class="list-item">
+                <span class="star">✦</span>
+                <span><strong>Interests:</strong> Data storytelling, UI/UX design, Blockchain, Vibe Coding</span>
+            </div>
+        </div>
+
+        <!-- CỘT PHẢI - ROW 2 -->
+        <div class="card">
+            <div class="label">Technical Skills</div>
+            <div class="list-item">
+                <span class="star">✦</span>
+                <span><strong>Modeling:</strong> LSTM, ARIMA, VAR, BVAR, TVAR, Bayesian, Random Forest</span>
+            </div>
+            <div class="list-item">
+                <span class="star">✦</span>
+                <span><strong>Data Engineering:</strong> PySpark, ETL Pipelines, SQL</span>
+            </div>
+            <div class="list-item">
+                <span class="star">✦</span>
+                <span><strong>Data Analysis:</strong> Python, Pandas, NumPy, EDA, Data Visualization</span>
+            </div>
+            <div class="list-item">
+                <span class="star">✦</span>
+                <span><strong>Web / Vibe Coding:</strong> Web App Development, Frontend UI, Deployment</span>
+            </div>
+        </div>
+
+        <!-- CỘT TRÁI - ROW 3 (Projects) -->
+        <div class="card full-width" style="grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="label">Selected Projects & Vibe Coding</div>
+            
+            <!-- CỘT DATA SCIENCE HẠNG NẶNG -->
+            <div style="grid-column: 1 / 2; display: flex; flex-direction: column; gap: 5px;">
+                <div class="project-item">
+                    <a href="https://github.com/tranthitrucxinh23052005-debug/Stock-Price-Forecasting-Comparison-" target="_blank" class="project-title">
+                        Stock Price Forecasting Engine <i class="fas fa-external-link-alt" style="font-size: 11px; margin-left: 3px;"></i>
+                    </a>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Built & compared ARIMA, Random Forest, and LSTM models on S&P 500 data.</li>
+                            <li>Reduced forecasting error (MAPE) by ~25–30% compared to baseline models.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <a href="https://github.com/tranthitrucxinh23052005-debug/Stock-Market-Pattern-Analysis-" target="_blank" class="project-title">
+                        Stock Market Pattern Analysis <i class="fas fa-external-link-alt" style="font-size: 11px; margin-left: 3px;"></i>
+                    </a>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Performed Exploratory Data Analysis (EDA) to identify stock market trends and volatility.</li>
+                            <li>Extracted actionable trading signals and recognized historical price patterns.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-item" style="margin-bottom: 0;">
+                    <a href="https://github.com/tranthitrucxinh23052005-debug/pyspark-realestate-analysis-" target="_blank" class="project-title">
+                        Real Estate ETL Pipeline <i class="fas fa-external-link-alt" style="font-size: 11px; margin-left: 3px;"></i>
+                    </a>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Processed 10,000+ records using PySpark framework.</li>
+                            <li>Designed scalable ETL pipeline for data cleaning and transformation.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CỘT VIBE CODING & TECH STACK -->
+            <div style="grid-column: 2 / 3; display: flex; flex-direction: column; justify-content: space-between;">
+                
+                <div class="project-item">
+                    <a href="https://e2e-chat-hub.vercel.app/" target="_blank" class="project-title" style="color: #4da6ff;">
+                        E2E Chat Hub (Vibe Coding) <i class="fas fa-external-link-alt" style="font-size: 11px; margin-left: 3px;"></i>
+                    </a>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Developed a secure web-based chat application.</li>
+                            <li>Implemented End-to-End (E2E) encryption using AES-256 for data privacy.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <a href="https://tiengtrungcungmeo.vercel.app/" target="_blank" class="project-title" style="color: #4da6ff;">
+                        Tiếng Trung Cùng Mèo <i class="fas fa-external-link-alt" style="font-size: 11px; margin-left: 3px;"></i>
+                    </a>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Built an interactive web platform for learning Chinese vocabulary.</li>
+                            <li>Focused on UI/UX to enhance the "vibe" and user engagement.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Hộp Tech Stack -->
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div class="project-title" style="font-size: 13px; color: #aaa; margin-bottom: 8px;">Tech Stack Arsenal</div>
+                    <div class="tools-container">
+                        <div class="tool-badge" style="border-color: #ffd43b; color: #ffd43b;">Python</div>
+                        <div class="tool-badge" style="border-color: #ff66a3;">PySpark</div>
+                        <div class="tool-badge" style="border-color: #4da6ff;">SQL</div>
+                        <div class="tool-badge" style="border-color: #f2c811; color: #f2c811;">PowerBI</div>
+                        <div class="tool-badge" style="border-color: #007acc; color: #007acc;">VSCode</div>
+                        <div class="tool-badge" style="border-color: #0f9d58; color: #0f9d58;">G-Docs/Sheets</div>
+                        <div class="tool-badge" style="border-color: #fff; color: #fff;">Vercel</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
