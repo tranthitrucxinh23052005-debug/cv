@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tran Thi Truc Xinh - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-pink: #f364a2;
+            --bg-dark: #12072b;
+            --text-main: #f0f0f0;
+            --border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 102, 163, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.3) 0%, transparent 60%),
+                linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .cv-container {
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .header-left .name {
+            font-family: 'Cinzel', serif;
+            font-size: 44px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 8px;
+            text-shadow: 0 0 15px rgba(243, 100, 162, 0.4);
+        }
+
+        .header-left .role {
+            font-size: 16px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--neon-pink);
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .header-right a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .header-right a:hover {
+            color: var(--neon-pink);
+        }
+
+        .separator {
+            border: none;
+            border-top: 1.5px dashed var(--border-color);
+            margin: 25px 0;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            border: 1.5px dashed var(--border-color);
+            border-radius: 12px;
+            background: rgba(20, 5, 40, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 30px 25px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .card.no-padding {
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(20, 5, 40, 0.2);
+        }
+
+        .label {
+            position: absolute;
+            top: -14px;
+            left: 20px;
+            background-color: var(--neon-pink);
+            color: white;
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(243, 100, 162, 0.6);
+            z-index: 5;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .list-item .star {
+            color: #ffdd57;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .social-qr-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+        }
+
+        .social-icons i {
+            font-size: 22px;
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid var(--neon-pink);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-icons i:hover {
+            background: var(--neon-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(243, 100, 162, 0.5);
+        }
+
+        .qr-code {
+            width: 85px;
+            height: 85px;
+            background: white;
+            padding: 6px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tools-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tool-badge {
+            background: rgba(255,255,255,0.05);
+            border: 1.5px solid var(--neon-pink);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .project-item {
+            margin-bottom: 25px;
+        }
+        
+        a.project-title {
+            display: inline-block;
+            font-weight: 800;
+            color: var(--neon-pink);
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a.project-title:hover {
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-pink);
+            padding-left: 5px;
+        }
+
+        .project-desc ul {
+            padding-left: 20px;
+            font-size: 13.5px;
+            color: #d1d1d1;
+            list-style-type: square;
+        }
+
+        .project-desc li {
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        /* --- PRINT OPTIMIZATION FOR 2 PAGES --- */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background-color: #0d0421 !important;
+                background-image: 
+                    radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.3) 0%, transparent 40%),
+                    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px) !important;
+                display: block !important;
+                padding: 40px !important;
+            }
+
+            .cv-container {
+                max-width: 100% !important;
+            }
+
+            .card {
+                background: #160a33 !important;
+                backdrop-filter: none !important;
+                border: 1px dashed rgba(255, 255, 255, 0.3) !important;
+                break-inside: avoid; /* Tránh cắt ngang thẻ khi ngắt trang */
+                margin-bottom: 20px !important;
+            }
+
+            .label {
+                background-color: #f364a2 !important;
+                color: white !important;
+            }
+
+            .header-left .name {
+                color: white !important;
+                text-shadow: none !important;
+            }
+
+            .social-icons i {
+                border-color: #f364a2 !important;
+                color: white !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-left">
+            <div class="name">TRAN THI TRUC XINH</div>
+            <div class="role">Data Analyst & ML Intern</div>
+        </div>
+        <div class="header-right">
+            <div><i class="fas fa-envelope"></i> <a href="mailto:tranthitrucxinh23052005@gmail.com">tranthitrucxinh23052005@gmail.com</a></div>
+            <div><i class="fab fa-github"></i> <a href="https://github.com/tranthitrucxinh23052005-debug" target="_blank">tranthitrucxinh23052005-debug</a></div>
+            <div><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/tranthitrucxinh/" target="_blank">in/tranthitrucxinh</a></div>
+            <div><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/truc.xinh.10591" target="_blank">truc.xinh.10591</a></div>
+        </div>
+    </header>
+    
+    <hr class="separator">
+
+    <!-- MAIN GRID -->
+    <div class="grid-layout">
+        
+        <!-- COLUMN 1: INTRO & EDUCATION -->
+        <div class="flex-col">
+            <div class="card">
+                <div class="label">About Me</div>
+                <p>
+                    Hi! I am a 3rd-year Data Science student at HUB specializing in time series forecasting, machine learning, and data pipelines. 
+                    I'm passionate about transforming raw data into actionable insights and blending rigorous logical analysis with unique visual storytelling.
+                </p>
+                <div class="social-qr-container">
+                    <div class="label" style="top: -35px; left: 0;">Connect</div>
+                    <div class="social-icons">
+                        <a href="https://github.com/tranthitrucxinh23052005-debug" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/tranthitrucxinh/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/truc.xinh.10591" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/_tieuthetunhacongdang23_/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <span style="color: #4da6ff; font-size: 16px; margin-right: 10px;">➡</span>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.linkedin.com/in/tranthitrucxinh/" alt="QR" class="qr-code">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="label">Academic Profile</div>
+                <div class="list-item">
+                    <span class="star">✦</span>
+                    <span><strong>Bachelor of Data Science in Business</strong><br>
+                    <small style="color: #aaa;">Banking University HCMC (HUB) - 3rd Year</small></span>
+                </div>
+                <div class="list-item">
+                    <span class="star">✦</span>
+                    <span style="font-size: 15px;"><strong>GPA: 3.6 / 4.0</strong></span>
+                </div>
+                <div class="list-item">
+                    <span class="star">✦</span>
+                    <span><strong>Student of 5 Merits</strong> (University Level)</span>
+                </div>
+                <div class="list-item">
+                    <span class="star">✦</span>
+                    <span>English: <strong>TOEIC 600+</strong> | MOS Master</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUMN 2: AVATAR & SKILLS -->
+        <div class="flex-col">
+            <div class="card no-padding" style="height: 320px;">
+                <img src="avatar.jpg" alt="Avatar" class="avatar-img" onerror="this.src='https://i.pinimg.com/736x/8f/a0/ea/8fa0ea2b9045b1dfbb0d8fbb52c21dc5.jpg'">
+            </div>
+
+            <div class="card">
+                <div class="label">Tech Arsenal</div>
+                <div class="list-item">
+                    <span class="star">✦</span>
+                    <span><strong>Modeling:</strong> LSTM, ARIMA, VAR, BVAR, TVAR, Bayesian Analysis</span>
+                </div>
+                <div class="list-item">
+                    <span class="star">✦</span>
+                    <span><strong>Big Data:</strong> PySpark framework, ETL Pipeline construction</span>
+                </div>
+                <div class="list-item">
+                    <span class="star">✦</span>
+                    <span><strong>Stack:</strong> Python (Pandas, NumPy, Scikit-learn), SQL, R</span>
+                </div>
+                <div class="list-item">
+                    <span class="star">✦</span>
+                    <span><strong>BI & Web:</strong> PowerBI, Vibe Coding (React/Tailwind), Vercel</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FULL WIDTH PROJECTS SECTION -->
+        <div class="card" style="grid-column: 1 / -1;">
+            <div class="label">Advanced Projects & Vibe Coding</div>
+            
+            <div class="grid-layout" style="gap: 40px; margin-top: 10px;">
+                <!-- Data Projects -->
+                <div>
+                    <div class="project-item">
+                        <a href="https://github.com/tranthitrucxinh23052005-debug/Stock-Price-Forecasting-Comparison-" target="_blank" class="project-title">Stock Price Forecasting Engine</a>
+                        <div class="project-desc">
+                            <ul>
+                                <li>Comparative study of ARIMA, Random Forest, and LSTM on S&P 500 data.</li>
+                                <li>Reduced forecasting error (MAPE) by ~25–30% against baseline.</li>
+                                <li>Handled stationarity checks and complex feature engineering.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <a href="https://github.com/tranthitrucxinh23052005-debug/Stock-Market-Pattern-Analysis-" target="_blank" class="project-title">Stock Market Pattern Recognition</a>
+                        <div class="project-desc">
+                            <ul>
+                                <li>In-depth EDA identifying historical trends and market volatility.</li>
+                                * <li>Recognized patterns to extract actionable trading signals.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <a href="https://github.com/tranthitrucxinh23052005-debug/pyspark-realestate-analysis-" target="_blank" class="project-title">Scalable ETL Pipeline (PySpark)</a>
+                        <div class="project-desc">
+                            <ul>
+                                <li>Architected a pipeline to process 10,000+ real estate records.</li>
+                                <li>Implemented missing value imputation and outlier detection at scale.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web / Vibe Coding Projects -->
+                <div>
+                    <div class="project-item">
+                        <a href="https://e2e-chat-hub.vercel.app/" target="_blank" class="project-title" style="color: #4da6ff;">E2E Chat Hub (Security Focus)</a>
+                        <div class="project-desc">
+                            <ul>
+                                <li>Full-stack secure chat application with AES-256 E2E encryption.</li>
+                                <li>Developed using Vibe Coding principles for high-engagement UI.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <a href="https://tiengtrungcungmeo.vercel.app/" target="_blank" class="project-title" style="color: #4da6ff;">Tiếng Trung Cùng Mèo (UX Focus)</a>
+                        <div class="project-desc">
+                            <ul>
+                                <li>Interactive vocabulary platform with immersive visual learning.</li>
+                                <li>Focused on seamless frontend transitions and user experience.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tools-container" style="margin-top: 30px;">
+                        <div class="tool-badge">Python</div>
+                        <div class="tool-badge">PySpark</div>
+                        <div class="tool-badge">SQL</div>
+                        <div class="tool-badge">PowerBI</div>
+                        <div class="tool-badge">Blockchain</div>
+                        <div class="tool-badge">Vercel</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
